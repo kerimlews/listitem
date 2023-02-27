@@ -1,0 +1,904 @@
+.referenceLabel {
+  margin-right: 5px;
+  bottom: 1px;
+}
+
+.referenceSnippet {
+  &_label {
+    font-weight: 600;
+    color: var(--reference-snippet-label-color, #8A9096);
+  }
+
+  &_text {
+    font-style: italic;
+    cursor: pointer;
+
+    & span {
+      padding: 2px 0;
+
+      &:first-of-type {
+        padding-left: 4px;
+      }
+
+      &:last-of-type {
+        padding-right: 4px;
+      }
+    }
+
+    &:hover span {
+      background-color: var(--reference-snippet-hover-background-color, gray);
+
+      &:first-of-type {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+
+      &:last-of-type {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+    }
+
+    .pp-snippet-ellipsis {
+      font-weight: bold;
+      color: var(--reference-snippet-label-color, #63696E);
+    }
+  }
+}
+
+.referenceSeparator {
+  margin: 0 8px;
+  color: var(--reference-separator-color, #B8BCBE) !important;
+
+  &.-small-margin {
+    margin: 0 4px;
+  }
+
+  &.-no-margin {
+    margin: 0;
+  }
+}
+
+.referencePdfMenu {
+  &_statusWrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &_addButton {
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.referenceIncompleteMenu {
+  border: 1px solid var(--reference-incomplete-menu-border-color, #DEDEDE);
+  display: inline-flex;
+  border-radius: 4px;
+  height: 20px;
+
+  &_wrapper {
+    display: grid;
+    grid-template-columns: auto 16px auto;
+    column-gap: 2px;
+    align-items: center;
+    padding: 2px 6px;
+    font-size: var(--reference-incomplete-menu-font-size, 12px);
+    line-height: var(--reference-incomplete-menu-line-height, 16px);
+    font-weight: var(--reference-incomplete-menu-font-weight, 500);
+    color: var(--reference-incomplete-menu-color, #8A9096);
+
+    &:nth-child(1) {
+      margin-left: -2px;
+    }
+  }
+
+  svg {
+    fill: var(--reference-incomplete-menu-icon-color, #DEDEDE);
+  }
+
+  &_icon {
+    pointer-events: none;
+  }
+
+  &_missingFields {
+    padding: 0 9px;
+    color: var(--reference-incomplete-menu-color, #8A9096);
+
+    &_field {
+      font-weight: 700;
+    }
+  }
+
+  &_actions {
+    display: flex;
+  }
+}
+
+.referenceFolder {
+  display: flex;
+  position: relative;
+  align-items: center;
+  grid-column-gap: 4px;
+  font-size: var(--small-font-size, 12px);
+  line-height: var(--small-line-height, 16px);
+  font-weight: var(--semi-font-weight, 600);
+  color: var(--reference-folder-text-color, #63696E);
+  box-shadow: none;
+  padding: 0;
+  cursor: pointer;
+  max-width: 168px;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  &.-show-margin {
+    margin-right: 4px;
+  }
+
+  &:not(.-no-hover):hover {
+    .referenceFolder_collectionName {
+      max-width: calc(100% - 36px);
+    }
+
+    button {
+      display: flex;
+    }
+  }
+
+  &_tooltip {
+    pointer-events: all !important;
+    color: #000 !important;
+    box-shadow: var(--reference-menu-box-shadow) !important;
+    border: 1px solid var(--reference-menu-border-color) !important;
+    padding: 10px;
+    background-color: var(--reference-background-color, white) !important;
+    opacity: 1 !important;
+    display: grid;
+    width: 168px;
+
+    .tooltip-arrow {
+      box-shadow: var(--reference-menu-box-shadow) !important;
+
+      &.right::before {
+        border-left: 1px solid var(--reference-menu-border-color) !important;
+        border-bottom: 1px solid var(--reference-menu-border-color) !important;
+      }
+
+      &.top::before {
+        border-right: 1px solid var(--reference-menu-border-color) !important;
+        border-bottom: 1px solid var(--reference-menu-border-color) !important;
+      }
+
+      &.bottom::before {
+        border-left: 1px solid var(--reference-menu-border-color) !important;
+        border-top: 1px solid var(--reference-menu-border-color) !important;
+      }
+    }
+  }
+
+  button {
+    display: none;
+    position: absolute;
+    top: 2px;
+    right: 0;
+    opacity: 1;
+  }
+
+  svg {
+    fill: var(--reference-folder-icon-color, #B8BCBE);
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+  &_collectionName {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 148px;
+  }
+
+  &_more {
+    font-size: var(--small-font-size, 12px);
+    line-height: var(--small-line-height, 16px);
+    font-weight: var(--medium-font-weight, 500);
+    color: var(--reference-folder-label-color, #8A9096);
+  }
+}
+
+.referencePdfButton {
+  padding: 2px 11px;
+  border-radius: 4px;
+  outline: 0;
+  background: transparent;
+  display: inline-flex;
+  margin-left: 8px;
+  vertical-align: text-bottom;
+  cursor: pointer;
+  fill: var(--reference-pdf-button-color, #B8BCBE);
+  color: var(--reference-pdf-button-fill, #B8BCBE);
+  opacity: var(--reference-pdf-button-opacity, 1);
+  border: var(--reference-pdf-button-border, 1px solid #DEDEDE);
+  font-size: var(--reference-pdf-button-font-size, 14px);
+  font-weight: var(--reference-pdf-button-font-weight, 600);
+  line-height: var(--reference-pdf-button-line-height, 18px);
+  align-items: center;
+  justify-content: center;
+
+  &:disabled {
+    fill: var(--reference-pdf-button-disabled-fill, #B8BCBE);
+    opacity: var(--reference-pdf-button-disabled-opacity, 0.7);
+
+    cursor: default;
+  }
+
+  &:hover {
+    background-color: var(--reference-pdf-button-hover-background, #1FAD71);
+    color: var(--reference-pdf-button-hover-color, #F7FDFB);
+    border: var(--reference-pdf-button-hover-border, 1px solid #1FAD71);
+  }
+}
+
+.referenceAttachments {
+  &_title {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    column-gap: 4px;
+    align-items: center;
+  }
+
+  &_size {
+    font-size: var(--small-font-size, 12px);
+    line-height: var(--small-line-height, 15px);
+    font-weight: var(--medium-font-weight, 500);
+    color: var(--reference-attachments-panel-info-color, #B8BCBE);
+  }
+
+  &_mainPdf {
+    font-size: var(--small-font-size, 12px);
+    line-height: var(--small-line-height, 15px);
+    font-weight: var(--medium-font-weight, 500);
+    fill: var(--reference-attachments-panel-icon-color, #DEDEDE);
+    color: var(--reference-attachments-panel-info-color, #B8BCBE);
+
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 4px;
+    align-items: center;
+
+    &:hover .attachments_individual_mainPdf_remove {
+      visibility: visible;
+    }
+
+    &_remove {
+      visibility: hidden;
+      margin-bottom: 2px;
+    }
+  }
+
+  &_filename {
+    color: var(--reference-attachments-panel-file-color, #3B84D2);
+    display: block;
+    text-align: left;
+    font-size: var(--medium-font-size, 14px);
+    line-height: var(--medium-line-height, 18px);
+    font-weight: var(--reference-attachments-panel-font-weight, 600);
+    margin-bottom: 2px;
+    text-decoration: none;
+
+    &.-disabled {
+      opacity: 0.5;
+    }
+  }
+
+  &_message {
+    display: block;
+    padding-top: 8px;
+    font-size: var(--medium-font-size, 14px);
+    line-height: var(--medium-line-height, 18px);
+    font-weight: var(--medium-font-weight, 600);
+    color: var(--reference-attachments-panel-color, #8A9096);
+    margin-bottom: 18px;
+  }
+
+  &_individual {
+    color: var(--reference-attachments-panel-info-color, #8A9096);
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+
+    &:last-of-type {
+      margin-bottom: 18px;
+    }
+
+    &_actions {
+      display: grid;
+      grid-column-gap: 4px;
+      grid-template-columns: auto auto auto 1fr auto auto auto;
+      align-items: center;
+
+      .gridReference_button {
+        color: var(--reference-attachments-panel-info-color, #8A9096);
+
+        &:hover {
+          color: var(--reference-attachments-panel-hover-color, #45494C);
+        }
+      }
+    }
+  }
+
+  &_footer {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-column-gap: 28px;
+    align-items: center;
+  }
+}
+
+.referenceNotes {
+  padding: 16px;
+  overflow: hidden;
+  min-height: 52px;
+  background-color: transparent;
+
+  color: var(--reference-notes-text-color, #37393C);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  resize: none;
+  width: 100%;
+  font-size: var(--medium-font-size, 14px);
+  line-height: var(--medium-line-height, 18px);
+  font-weight: var(--regular-font-weight, 400);
+  outline: none;
+
+  &:not(.-active):hover {
+    border-color: var(--reference-notes-border-color, #DEDEDE);
+
+    & + .referenceNotes_hint {
+      visibility: visible;
+    }
+  }
+
+  &.-active {
+    border-color: var(--reference-notes-border-color, #DEDEDE);
+    background-color: var(--reference-notes-active-background-color, #FFFFFF);
+
+    & + .referenceNotes_hint {
+      display: none;
+    }
+  }
+
+  &.-disabled {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  &_actions {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    column-gap: 12px;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+
+  &_hint {
+    padding-top: 12px;
+    padding-bottom: 10px;
+    font-size: var(--medium-font-size, 14px);
+    line-height: var(--medium-line-height, 18px);
+    font-weight: var(--medium-font-weight, 500);
+    color: var(--reference-notes-hint-text-color, #8A9096);
+    text-align: right;
+    visibility: hidden;
+  }
+}
+
+.iconButton {
+  padding: 0;
+  outline: 0;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 4px;
+  color: var(--icon-button-color);
+  fill: var(--icon-button-color);
+
+  &:hover {
+    background-color: var(--icon-button-hover-background-color);
+  }
+
+  &:disabled {
+    opacity: .4;
+    cursor: default;
+  }
+}
+
+.gridReference_button {
+  padding: 0;
+  outline: 0;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  font-size: var(--reference-default-font-size, 14px);
+  line-height: var(--reference-default-line-height, 18px);
+  border-radius: 4px;
+
+  &.-small {
+    font-size: var(--reference-small-font-size, 12px);
+    line-height: var(--reference-small-line-height, 15px);
+  }
+
+  &.grayed {
+    opacity: .6;
+  }
+
+  &:disabled {
+    opacity: .4;
+    cursor: default;
+  }
+}
+
+.gridReference_extraButtons {
+  display: flex;
+  column-gap: 8px;
+}
+
+.gridReference_linkButton {
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  color: var(--reference-attachment-action-color, #8A9096);
+  border-left: 1px solid var(--reference-attachment-action-color, #8A9096);
+  padding: 0 9px;
+
+  &:first-of-type {
+    border-left: none;
+  }
+
+  &:hover {
+    color: var(--reference-attachment-action-hover-color, #45494C);
+  }
+
+  font-size: var(--reference-small-font-size, 12px);
+  line-height: var(--reference-small-line-height, 15px);
+}
+
+
+.gridReference {
+  border-bottom: 1px solid var(--reference-border-color, #E8E8E9);
+  border-right: 1px solid var(--reference-border-color, #E8E8E9);
+  position: relative;
+  background: var(--reference-background-color, white);
+
+  .pp-grid-highlight {
+    background-color: var(--reference-highlight-background-color, #F1F293);
+    border-radius: 4px;
+  }
+
+  &.-draggingOver {
+    background: var(--reference-dragging-over-background-color, #F2F7FD);
+  }
+
+  &.-bottom-margin {
+    margin-bottom: 16px;
+  }
+
+  &.-table-view {
+    .referenceWrapper_handleWrapper {
+      grid-row-gap: 0;
+    }
+
+    .referenceWrapper_contentWrapper {
+      grid-template-columns: auto max-content max-content;
+      grid-column-gap: 16px;
+      align-items: center;
+    }
+
+    .referenceWrapper_contentPanel {
+      padding: 7px 14px 7px 16px;
+    }
+
+    .referenceWrapper_dragHandle {
+      position: absolute;
+      left: 0;
+      top: 6px;
+      margin-left: -3px;
+    }
+  }
+
+  &_actionsMenu {
+    box-shadow: var(--reference-menu-box-shadow);
+    border-radius: var(--reference-border-radius, 4px);
+    background-color: var(--reference-background-color, white);
+    color: var(--reference-notes-text-color, #63696E);
+    padding: 8px 0;
+    min-width: 200px;
+    list-style: none;
+
+    li {
+      display: flex;
+      max-height: 36px;
+    }
+  }
+
+  &_contentPanel {
+    display: grid;
+    grid-template-columns: 12px auto;
+    grid-template-areas: "handle ." "handle .";
+    grid-column-gap: 12px;
+    padding: 16px 12px 8px 15px;
+    position: relative;
+
+    &.-details-expanded {
+      grid-template-areas: "handle ." ". details" ". toolbar";
+
+      .gridReference_contentPanel_toolbar {
+        grid-area: toolbar;
+      }
+    }
+
+    &.-active {
+      &::before {
+        content: '';
+        left: 0px;
+        position: absolute;
+        width: 4px;
+        height: calc(100% + 1px);
+        top: -1px;
+        background: var(--reference-active-border-color, #29598C);
+      }
+
+      .-hover-toggle-visibility {
+        visibility: visible;
+      }
+    }
+
+    &_topRight {
+      display: flex;
+      column-gap: 8px;
+      color: var(--reference-menu-icon-color, #8A9096);
+      fill: var(--reference-menu-icon-color, #8A9096);
+
+      .-hover-toggle-visibility {
+        visibility: hidden;
+      }
+    }
+
+    &_handle {
+      display: grid;
+      padding-top: 4px;
+      grid-template-rows: 12px 1fr;
+      row-gap: 7px;
+      align-items: baseline;
+      grid-area: handle;
+      overflow-x: visible;
+      width: 12px;
+      justify-items: baseline;
+
+      &_checkbox {
+        margin: 0;
+        cursor: pointer;
+        outline: none;
+      }
+
+      &_icon {
+        fill: var(--reference-icon-button-color);
+        cursor: grab;
+        position: relative;
+        left: -4px;
+
+        &>path {
+          cursor: grab;
+        }
+      }
+    }
+
+    &_details {
+      grid-area: details;
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      padding: 12px 90px 17px 0px;
+
+      &_fieldLabel {
+        font-weight: 700;
+        color: var(--reference-details-field-label-color, #8A9096);
+        font-size: var(--reference-default-font-size, 14px);
+        line-height: var(--reference-small-line-height, 18px);
+      }
+
+      &_fieldValue {
+        color: var(--reference-details-field-value-color, #37393C);
+        font-size: var(--reference-default-font-size, 14px);
+        line-height: var(--reference-default-line-height, 18px);
+        fill: var(--reference-details-field-value-icon-color, #B8BCBE);
+        flex-grow: 0;
+        user-select: text;
+        width: 100%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 6px;
+
+        &:last-of-type {
+          padding-bottom: 0;
+        }
+
+        a {
+          height: 16px;
+          width: 16px;
+
+          &:hover {
+            fill: var(--reference-icon-button-hover-color, #8A9096);
+          }
+        }
+
+        &_mail {
+          display: inline-flex;
+          align-items: center;
+        }
+
+        &_url {
+          align-items: center;
+          display: grid;
+          grid-template-columns: auto 1fr;
+          grid-column-gap: 2px;
+
+          .-with-ellipsis {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+    }
+
+    &_toolbar {
+      display: grid;
+      grid-auto-columns: max-content max-content max-content auto max-content;
+      grid-auto-flow: column;
+      min-height: 24px;
+
+      &_profileWrapper {
+        display: flex;
+        align-items: center;
+      }
+
+      &_text {
+        font-size: var(--reference-small-font-size, 12px);
+        line-height: var(--reference-small-line-height, 15px);
+        color: var(--reference-attachment-action-color, #8A9096);
+        visibility: hidden;
+        min-height: 20px;
+      }
+
+      &_iconButtons {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+
+        .gridReference_button {
+          width: 20px;
+          height: 20px;
+          fill: var(--reference-icon-button-color, #B8BCBE);
+          position: relative;
+
+          &.-with-badge::before {
+            position: absolute;
+            content: attr(data-badge);
+            background: var(--reference-border-color, #E8E8E9);
+            border-radius: 8px;
+            z-index: 100;
+            padding: 5.5px 3px;
+            min-width: 13px;
+            height: 13px;
+            border: 2px solid var(--reference-background-color, white);
+            top: 10px;
+            left: 8px;
+            box-sizing: border-box;
+            font-size: 9px;
+            line-height: 11px;
+            font-weight: 700;
+            color: var(--reference-icon-button-hover-color, #8A9096);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          &:enabled:hover {
+            fill: var(--reference-icon-button-hover-color, #8A9096);
+          }
+        }
+      }
+
+      &_folders {
+        display: flex;
+        align-items: center;
+      }
+
+      &_links {
+        display: flex;
+        align-items: center;
+      }
+
+      &_viewButton {
+        font-weight: 400;
+        line-height: 16px;
+        border-radius: var(--reference-border-radius, 4px);
+        vertical-align: inherit;
+        background-color: var(--reference-button-background-color, #F7F7F7);
+        color: var(--reference-button-color, #63696E);
+        cursor: pointer;
+        padding: 2px 16px;
+
+        &:hover {
+          background-color: var(--reference-button-hover-background-color, #E8E8E9);
+        }
+
+        &.hidden {
+          visibility: hidden;
+        }
+      }
+    }
+  }
+
+  &_bottomPanel {
+    background-color: var(--reference-bottom-panel-background-color);
+    border-bottom: 1px solid var(--reference-border-color, #E8E8E9);
+    border-right: 1px solid var(--reference-border-color, #E8E8E9);
+    grid-column: 1 / 4;
+    padding: 16px 42px 16px 36px;
+    color: var(--reference-notes-text-color, #63696E);
+    position: relative;
+
+    &.-arrow {
+      &.-abstract {
+        &::after {
+          left: 40px;
+        }
+
+        &::before {
+          left: 38px;
+        }
+      }
+
+      &.-attachments {
+        &::after {
+          left: 66px;
+        }
+
+        &::before {
+          left: 64px;
+        }
+      }
+
+      &.-notes {
+        &::after {
+          left: 90px;
+        }
+
+        &::before {
+          left: 88px;
+        }
+      }
+
+      &::after {
+        content: '';
+        width: 0;
+        height: 0;
+        display: block;
+        border-top: 10px solid var(--reference-background-color);
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        box-sizing: border-box;
+        position: absolute;
+        top: -1px;
+        left: 40px;
+      }
+
+      &::before {
+        content: '';
+        width: 0;
+        height: 0;
+        display: block;
+        border-top: 12px solid var(--reference-border-color, #E8E8E9);
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        box-sizing: border-box;
+        position: absolute;
+        top: -1px;
+        left: 38px;
+      }
+    }
+
+    .pp-grid-highlight {
+      background-color: var(--reference-highlight-background-color, #F1F293);
+      border-radius: 4px;
+    }
+
+    &.-bottom-margin {
+      margin-bottom: 16px;
+    }
+
+    &_actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 8px;
+
+      .gridReference_button {
+        border-radius: var(--reference-border-radius, 4px);
+        vertical-align: inherit;
+        cursor: pointer;
+        padding: 2px 16px 2px 16px;
+
+        &.-default {
+          background-color: var(--reference-button-background-color, #F7F7F7);
+          color: var(--reference-button-color, #63696E);
+          border: 1px solid var(--reference-button-border-color, #DEDEDE);
+
+          &:hover {
+            background-color: var(--reference-button-hover-background-color, #E8E8E9);
+          }
+        }
+
+        &.-primary {
+          background-color: var(--reference-button-primary-background-color, #5998DA);
+          color: var(--reference-button-primary-color, #F6FAFD);
+          margin-left: 8px;
+
+          &:hover {
+            background-color: var(--reference-button-primary-background-hover-color, #3B84D2);
+          }
+        }
+      }
+    }
+  }
+
+  &_profile {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+
+    &_placeholder {
+      width: 20px;
+      height: 20px;
+      margin-right: 16px;
+      background: #cccccc;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+
+      svg {
+        margin-left: 1px;
+        height: 16px;
+        width: 16px;
+      }
+    }
+
+    &_image {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      margin-right: 16px;
+      object-fit: cover;
+    }
+  }
+}
